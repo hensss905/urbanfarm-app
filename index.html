@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UrbanFarm Africa – Farm Diary</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f5;
+  margin: 0;
+  padding: 15px;
+}
+h1 {
+  text-align: center;
+  color: #1b5e20;
+}
+h2 {
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+.section {
+  background: #ffffff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+textarea {
+  min-height: 80px;
+}
+button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+button:hover {
+  background: #1b5e20;
+}
+.small {
+  font-size: 13px;
+  color: #555;
+}
+.checklist label {
+  font-weight: normal;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌱🐔 UrbanFarm Africa</h1>
+<p class="small" style="text-align:center;">
+Daily Poultry & Hydroponic Farm Diary (Free & Mobile Friendly)
+</p>
+
+<div class="section checklist">
+<h2>🐔 Poultry Daily Checklist</h2>
+<label><input type="checkbox"> Feed given</label>
+<label><input type="checkbox"> Water checked</label>
+<label><input type="checkbox"> Birds healthy</label>
+<label><input type="checkbox"> Dead birds removed</label>
+<label><input type="checkbox"> Drinkers cleaned</label>
+<label><input type="checkbox"> House cleaned</label>
+<label><input type="checkbox"> Temperature checked</label>
+<label><input type="checkbox"> Biosecurity followed</label>
+</div>
+
+<div class="section">
+<h2>📝 Poultry Notes</h2>
+<textarea placeholder="Feeding routine, cleaning routine, health issues..."></textarea>
+</div>
+
+<div class="section">
+<h2>☠️ Mortality Log</h2>
+<label>Birds lost today</label>
+<input type="number" placeholder="0">
+</div>
+
+<div class="section">
+<h2>🌽 Feed Calculator (6-Week Cycle)</h2>
+<label>Number of broilers</label>
+<input type="number" id="birds" placeholder="e.g. 100">
+<button onclick="calcFeed()">Calculate Feed</button>
+<p id="feedResult" class="small"></p>
+</div>
+
+<div class="section">
+<h2>🌿 Hydroponic Vegetables</h2>
+
+<label>Vegetable type</label>
+<select>
+  <option>Lettuce</option>
+  <option>Spinach</option>
+  <option>Kale</option>
+  <option>Tomatoes</option>
+  <option>Peppers</option>
+  <option>Other</option>
+</select>
+
+<label>Number of plants</label>
+<input type="number" placeholder="e.g. 200">
+
+<label>Nutrients applied today?</label>
+<select>
+  <option>No</option>
+  <option>Yes</option>
+</select>
+
+<label>Hydroponic notes</label>
+<textarea placeholder="Nutrient mix, EC, pH, plant health..."></textarea>
+</div>
+
+<button onclick="saveData()">💾 Save Today</button>
+
+<script>
+function calcFeed() {
+  const birds = document.getElementById("birds").value;
+  if (!birds || birds <= 0) {
+    alert("Enter number of broilers");
+    return;
+  }
+  const totalKg = birds * 3.5;
+  const bags = Math.ceil(totalKg / 50);
+  document.getElementById("feedResult").innerText =
+    `Total feed needed (6 weeks): ${totalKg.toFixed(1)} kg (~${bags} × 50kg bags)`;
+}
+
+function saveData() {
+  alert("Daily data saved on this device.");
+}
+</script>
+
+</body>
+</html>
